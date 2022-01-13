@@ -13,14 +13,14 @@ const Home = () => {
   let changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  let firstPage = ({selected}) => {
-    if (selected = 200) {
-     return  setPageNumber(selected)
+  let firstPage = ({ selected }) => {
+    if ((selected = 0.01)) {
+      return setPageNumber(selected);
     }
   };
   let lastPage = ({ selected }) => {
-    if (selected = 1) {
-      return setPageNumber(selected)
+    if ((selected = 19)) {
+      return setPageNumber(selected);
     }
   };
 
@@ -33,12 +33,11 @@ const Home = () => {
   }, []);
 
   let pageCount = Math.ceil(state.length / usersPerPage);
-  console.log(pageCount);
-  
+  // console.log(pageCount);
 
   let displayUser = state.slice(visited, visited + usersPerPage).map(x => {
     return (
-      <tr key={x.id} className="bg-gray-200">
+      <tr key={x.id} className='bg-gray-200'>
         <td className='border border-black'>{x.id}</td>
         <td className='border border-black '>{x.userId}</td>
         <td className='border border-black '>{x.title}</td>
@@ -51,11 +50,11 @@ const Home = () => {
 
   return (
     <Fragment>
-      <div className='w-3/5 text-center m-auto mt-10 bg-white p-4 '>
+      <div className='w-4/5  m-auto mt-10 bg-white p-4 '>
         <h1 className='w-1/5 m-auto  uppercase font-bold text-center mb-2 underline '>
           Todos Details
         </h1>
-        <table className='border border-black border-collapse'>
+        <table className='w-4/5 m-auto border border-black border-collapse'>
           <thead className=' bg-blue-300'>
             <tr>
               <th className='border border-black uppercase '>Id</th>
@@ -75,12 +74,12 @@ const Home = () => {
           First
         </button>
         <ReactPaginate
-          
-          previousLable={"Previous"}
+          forcePage
+          previousLable={"prev"}
           pageCount={pageCount}
           nextLable={"next"}
           onPageChange={changePage}
-          className='flex m-auto  space-x-4 border-2'
+          className='flex m-auto  space-x-4 border-2 disabled'
         />
         <button
           onClick={lastPage}
